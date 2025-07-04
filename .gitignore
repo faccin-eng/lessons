@@ -1,0 +1,35 @@
+# Arquivos do ambiente virtual Python
+venv/
+.env/
+ENV/
+
+# Arquivos de cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configurações do VS Code
+.vscode/
+
+# Arquivos de configuração e logs
+*.log
+*.sqlite
+*.db
+
+# Arquivos de distribuição / instalação
+*.egg-info/
+*.egg
+dist/
+build/
+pip-wheel-metadata/
+
+# Arquivos de ambiente
+.env
+.venv
+env/
+env.bak/
+venv.bak/
+
+# Arquivos de IDE
+.idea/
+.DS_Store

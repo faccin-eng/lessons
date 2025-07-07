@@ -1,9 +1,18 @@
 @charset "UTF-8";
-
+.navbar{
+    background-color: aquamarine;
+    background-image: linear-gradient(to bottom, rgb(7, 75, 7), rgb(219, 219, 138)) ;
+}
+.navbar-item{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    text-shadow: blueviolet;
+}
 body{
     background-color:wheat;
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
+    text-shadow: blueviolet;
 
 }
 h1{

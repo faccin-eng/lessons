@@ -1,19 +1,70 @@
 #Lista de palavras:
+
 import random
+import unicodedata
+
+def remover_acentos(texto):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto)
+        if unicodedata.category(c) != 'Mn'
+    )
+
 palavras = [
-    "abacaxi",  # Fruta tropical
-    "banana",   # Fruta amarela 
-    "cachorro", # Animal de estimação
-    "dicionário", # Livro de palavras e seus significados       
-    "elefante", # Animal grande com tromba
-    "futebol",  # Esporte popular
-    "guitarra", # Instrumento musical de cordas
-    "hipopótamo", # Animal grande que vive na água
-    "jacaré",   # Réptil grande que vive em água doce   
-    "kiwi",     # Fruta pequena e verde
-    "leão",     # Animal selvagem conhecido como rei da selva
+    "abacaxi",  
+    "banana",   
+    "cachorro", 
+    "dicionário",       
+    "elefante", 
+    "futebol",  
+    "guitarra", 
+    "hipopótamo", 
+    "jacaré",   
+    "kiwi",     
+    "leão",     
 ]
 
-#Função para escolher uma palavra aleatória 
 palavra_escolhida = random.choice(palavras)
+palavra_sem_acentos = remover_acentos(palavra_escolhida)  # Versão sem acentos
+letras = []
+tentativas = 7
+
+while True:
+    # Mostrar a palavra
+    for i, letra_original in enumerate(palavra_escolhida):
+        letra_sem_acento = palavra_sem_acentos[i]
+        if letra_sem_acento in letras or letra_original in letras:
+            print(letra_original, end=" ")  # Mantém a letra original (com acento)
+        else:
+            print("_", end=" ")
+    print()
+
+    palpite = input("Digite um palpite: ").lower()
+    palpite_sem_acento = remover_acentos(palpite)
+
+    if palpite_sem_acento in letras:
+        print("Você já tentou essa letra.")
+    elif palpite_sem_acento in palavra_sem_acentos:
+        print("Acertou!")
+        letras.append(palpite_sem_acento)
+    else:
+        print("Errou.")
+        letras.append(palpite_sem_acento)
+        tentativas -= 1
+
+    if all(c in letras or c == ' ' for c in palavra_sem_acentos):
+        print(f"Você ganhou! A palavra era: {palavra_escolhida}")
+        break
+
+    if tentativas == 0:
+        print(f"Você perdeu! A palavra era: {palavra_escolhida}")
+        break
+
+
+
+
+
+
+    
+
+
 
